@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        .bacon{
+            background-color: burlywood;
+        }
+        .marha{
+            background-color: brown;
+        }
+        .cheddar{
+            background-color: yellow;
+        }
+        .alkatresz{
+            width: 100px;
+            height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-3 border">
+                <div class="my-2">
+                    Marhahúspogácsa
+                    <button class="btn btn-primary" id="marhaplusz">+</button>
+                    <button class="btn btn-primary" id="marhaminusz">-</button>
+
+                </div>
+                <div class="my-2">
+                    Cheddar sajt
+                    <button class="btn btn-primary" id="cheddarplusz">+</button>
+                    <button class="btn btn-primary" id="cheddarminusz">-</button>
+
+                </div>
+                <div class="my-2">
+                    Bacon
+                    <button class="btn btn-primary" id="baconplusz">+</button>
+                    <button class="btn btn-primary" id="baconminusz">-</button>
+
+                </div>
+
+            </div>
+            <div class="col-9 border" id="keszEtek">
+                <div class="d-none"></div>
+            
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script>
+        let gombok = document.querySelectorAll("button");
+        console.log(gombok)
+        gombok.forEach(x => { x.addEventListener("click", burgeri) });
+
+
+        function burgeri() {
+            let div;
+            switch (this.id) {
+                case "baconminusz":
+                    let baconok = document.getElementsByClassName("bacon")
+                    if(baconok.length==0){
+                        console.log("nincs")
+                    }
+                    console.log(baconok)
+                    baconok[0].remove()
+                    break;
+                    
+                    break;
+                case "baconplusz":
+                    div=document.createElement("div");
+                    div.className = "bacon alkatresz"
+                   keszEtek.insertBefore(div, keszEtek.firstElementChild)
+                    
+                    break;
+                case "marhaplusz":
+                    div=document.createElement("div");
+                    div.className = "marha alkatresz"
+                    keszEtek.insertBefore(div, keszEtek.firstElementChild)
+                    break;
+                case "marhaminusz":
+                    let marhak = document.getElementsByClassName("marha");
+                    if(marhak.length==0){
+                        console.log("nincs")
+                    }
+                    marhak[0].remove()
+                    break;
+                    
+                case "cheddarplusz":
+                    div=document.createElement("div");
+                    div.className = "cheddar alkatresz"
+                    keszEtek.insertBefore(div, keszEtek.firstElementChild)
+                    break;
+                case "cheddarminusz":
+                    let cheddarok = document.getElementsByClassName("cheddar");
+                    if(cheddarok.length==0){
+                        console.log("nincs")
+                    }
+                    
+                    cheddarok[0].remove()
+                    
+                    break;
+                default:
+                    console.log("semmi")
+
+
+            }
+
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

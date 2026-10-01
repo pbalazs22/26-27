@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        .gombok {
+            height: 300px;
+            width: 500px;
+
+        }
+
+        .kepernyo {
+            height: 300px;
+            width: 500px;
+
+        }
+
+        .doboz {
+            width: 500px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="doboz mx-auto">
+            <div class="col-12 border">
+                
+            </div>
+                            
+            <div class="border text-center kepernyo">
+                <div class="col-12 ">Telefon</div>
+                <div class="col-4" id="minutes">00</div>:<div class="col-4" id="seconds">00</div>
+                 
+                <div class="col-12" id="iras"></div>
+
+            </div>
+            
+
+            <div class="col-12 border text-center gombok">
+
+                <div class="row ">
+                    <div class="col-4 my-2 szam">1</div>
+                    <div class="col-4 my-2 szam">2</div>
+                    <div class="col-4 my-2 szam">3</div>
+                </div>
+                <div class="row">
+                    <div class="col-4 my-2 szam">4</div>
+                    <div class="col-4 my-2 szam">5</div>
+                    <div class="col-4 my-2 szam">6</div>
+                </div>
+                <div class="row">
+                    <div class="col-4 my-2 szam">7</div>
+                    <div class="col-4 my-2 szam">8</div>
+                    <div class="col-4 my-2 szam">9</div>
+                </div>
+                <div class="row">
+                    <div class="col-4 lerak">☎️</div>
+                    <div class="col-4 szam">0</div>
+                    <div class="col-4 " id="hiv">📞</div>
+                </div>
+
+            </div>
+            
+        </div>
+        
+    </div>
+
+</body>
+
+<script>
+    let divek = document.querySelectorAll(".szam");
+    console.log(divek)
+    divek.forEach(x => x.addEventListener("click", lefut));
+
+    function lefut() {
+        let adott = this.textContent;
+        console.log(adott)
+        let kep = document.getElementById("iras").textContent += adott
+
+    }
+    
+    const hivas = document.getElementById("hiv")
+
+    hivas.addEventListener("click", idoindul);  
+
+    function idoindul() {
+
+        var minutesLabel = document.getElementById("minutes");
+        var secondsLabel = document.getElementById("seconds");
+        var totalSeconds = 0;
+        setInterval(setTime, 1000);
+
+        function setTime() {
+            ++totalSeconds;
+            secondsLabel.innerHTML = pad(totalSeconds % 60);
+            minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+        }
+
+        function pad(val) {
+            var valString = val + "";
+            if (valString.length < 2) {
+                return "0" + valString;
+            } else {
+                return valString;
+            }
+        }
+    }
+</script>
+
+
+
+</html>
