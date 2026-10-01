@@ -12,16 +12,31 @@
         .gombok {
             height: 300px;
             width: 500px;
+            background-color: gray;
 
         }
 
         .kepernyo {
             height: 300px;
             width: 500px;
+            background-color: rgb(167, 166, 166);
 
         }
 
         .doboz {
+            width: 500px;
+
+        }
+
+        .szamlalo {
+            background-color: rgb(167, 166, 166);
+        }
+        .szam{
+            font-size: 30px;
+        }
+        #iras{
+            font-size: 60px;
+            height: 300px;
             width: 500px;
 
         }
@@ -32,17 +47,30 @@
     <div class="container">
         <div class="doboz mx-auto">
             <div class="col-12 border">
-                
-            </div>
-                            
-            <div class="border text-center kepernyo">
-                <div class="col-12 ">Telefon</div>
-                <div class="col-4" id="minutes">00</div>:<div class="col-4" id="seconds">00</div>
-                 
-                <div class="col-12" id="iras"></div>
+
 
             </div>
+
+            <div class="border text-center kepernyo">
+                <div class="col-12 ">Telefon</div>
+                <div class="doboz mx-auto" id="iras"></div>
+
+
+
+
+
+            </div>
+
             
+
+            <div class="row text-center border szamlalo">
+
+                <div class="col-4" id="minutes">00</div>
+                <div class="col-4">:</div>
+                <div class="col-4" id="seconds">00</div>
+            </div>
+
+
 
             <div class="col-12 border text-center gombok">
 
@@ -62,15 +90,15 @@
                     <div class="col-4 my-2 szam">9</div>
                 </div>
                 <div class="row">
-                    <div class="col-4 lerak">☎️</div>
+                    <div class="col-4" id="lerak">☎️</div>
                     <div class="col-4 szam">0</div>
                     <div class="col-4 " id="hiv">📞</div>
                 </div>
 
             </div>
-            
+
         </div>
-        
+
     </div>
 
 </body>
@@ -86,17 +114,25 @@
         let kep = document.getElementById("iras").textContent += adott
 
     }
-    
+
     const hivas = document.getElementById("hiv")
 
-    hivas.addEventListener("click", idoindul);  
+    hivas.addEventListener("click", idoindul);
 
+    const lerak = document.getElementById("lerak")
+    lerak.addEventListener("click", idoall);
+
+
+
+    let timer;
+
+    let totalSeconds = 0;
     function idoindul() {
-
         var minutesLabel = document.getElementById("minutes");
         var secondsLabel = document.getElementById("seconds");
-        var totalSeconds = 0;
-        setInterval(setTime, 1000);
+        totalSeconds = 0;
+        
+        timer = setInterval(setTime, 1000);
 
         function setTime() {
             ++totalSeconds;
@@ -111,8 +147,12 @@
             } else {
                 return valString;
             }
-        }
+        }     
+
     }
+    function idoall() {
+            clearInterval(timer);
+        }
 </script>
 
 
